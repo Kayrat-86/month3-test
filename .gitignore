@@ -1,24 +1,45 @@
-# Python cache
+# =========================
+# Python
+# =========================
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.pym
+*.pdb
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
 
-# Virtual environment
+# =========================
+# Виртуалдык чөйрөлөр
+# =========================
 venv/
+env/
+ENV/
 .env/
 .venv/
 
-# VS Code settings
+# =========================
+# IDE жана редакторлор
+# =========================
 .vscode/
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
 
-# System files
+# =========================
+# Операциондук системалар
+# =========================
 .DS_Store
 Thumbs.db
+*.swp
 
-# Flet build
-build/
-dist/
-
-# Logs
-.log
+# =========================
+# Файлдар, сактоо үчүн эмес
+# =========================
+*.sqlite3
+*.db
