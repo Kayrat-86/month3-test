@@ -3,10 +3,10 @@ from datetime import datetime
 
 def main(page: ft.Page):
     page.title = 'Мое первое приложение'
-    page.theme_mode = ft.ThemeMode.LIGHT
+    page.theme_mode = ft.ThemeMode.LIGHT  
 
     greeting_text = ft.Text(value='Hello world')
-    greeting_history = []     
+    greeting_history = []    
     history_text = ft.Text(value="История приветствий:")
 
     def update_history_list(data):
@@ -41,11 +41,7 @@ def main(page: ft.Page):
 
         page.update()
 
-    name_input = ft.TextField(
-        label='Введите имя',
-        on_submit=on_button_click,
-        expand=True
-    )
+    name_input = ft.TextField(label='Введите имя', on_submit=on_button_click, expand=True)
     send_button = ft.ElevatedButton(text='send', on_click=on_button_click)
 
     def clear_history(_):
@@ -68,8 +64,21 @@ def main(page: ft.Page):
     morning_button = ft.TextButton("Утренние", on_click=show_morning)
     evening_button = ft.TextButton("Вечерние", on_click=show_evening)
 
+    def toggle_theme(_):
+        if page.theme_mode == ft.ThemeMode.LIGHT:
+            page.theme_mode = ft.ThemeMode.DARK
+        else:
+            page.theme_mode = ft.ThemeMode.LIGHT
+        page.update()
+
+    theme_button = ft.IconButton(
+        icon=ft.Icons.BRIGHTNESS_7,
+        tooltip="Сменить тему",
+        on_click=toggle_theme
+    )
+
     page.add(
-        ft.Row([greeting_text], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([greeting_text, theme_button], alignment=ft.MainAxisAlignment.CENTER),
         ft.Row([name_input, send_button, clear_button]),
         ft.Row([morning_button, evening_button], alignment=ft.MainAxisAlignment.CENTER),
         history_text
