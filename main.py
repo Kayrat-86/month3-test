@@ -64,6 +64,13 @@ def main(page: ft.Page):
     morning_button = ft.TextButton("Утренние", on_click=show_morning)
     evening_button = ft.TextButton("Вечерние", on_click=show_evening)
 
+    def sort_by_alphabet(_):
+        sorted_list = sorted(greeting_history, key=lambda x: x[1].lower())
+        update_history_list(sorted_list)
+        page.update()
+
+    sort_button = ft.TextButton("Сортировать по алфавиту", on_click=sort_by_alphabet)
+
     def toggle_theme(_):
         if page.theme_mode == ft.ThemeMode.LIGHT:
             page.theme_mode = ft.ThemeMode.DARK
@@ -80,7 +87,7 @@ def main(page: ft.Page):
     page.add(
         ft.Row([greeting_text, theme_button], alignment=ft.MainAxisAlignment.CENTER),
         ft.Row([name_input, send_button, clear_button]),
-        ft.Row([morning_button, evening_button], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([morning_button, evening_button, sort_button], alignment=ft.MainAxisAlignment.CENTER),
         history_text
     )
 
