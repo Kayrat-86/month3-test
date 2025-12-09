@@ -14,7 +14,7 @@ def main(page: ft.Page):
             history_text.value = "История приветствий:"
         else:
             lines = [
-                f"{t.strftime('%y:%m:%d - %H:%M:%S')} - {name}"
+                f"{t.strftime('%d:%m:%y - %H:%M:%S')} - {name}"
                 for t, name in data
             ]
             history_text.value = "История приветствий:\n" + "\n".join(lines)
@@ -24,7 +24,7 @@ def main(page: ft.Page):
         now = datetime.now()
 
         if name:
-            timestamp_str = now.strftime("%y:%m:%d - %H:%M:%S")
+            timestamp_str = now.strftime("%d:%m:%y - %H:%M:%S")
             greeting_text.value = f'{timestamp_str} Hello {name}'
             greeting_text.color = None
             name_input.value = ""
